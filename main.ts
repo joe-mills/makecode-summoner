@@ -26,6 +26,97 @@ function summon () {
     tiles.placeOnTile(creature, tiles.getTileLocation(summoner.x, 0))
     creature.setPosition(summoner.x + 15, summoner.y)
     creature.say(":)")
+    animation.runImageAnimation(
+    creature,
+    [img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . c d f d d f d e e f f . . . . 
+        . c d f d d f d e e d d f . . . 
+        c d e e d d d d e e b d c . . . 
+        c d d d d c d d e e b d c . f f 
+        c c c c c d d d e e f c . f e f 
+        . f d d d d d e e f f . . f e f 
+        . . f f f f f e e e e f . f e f 
+        . . . . f e e e e e e e f f e f 
+        . . . f e f f e f e e e e f f . 
+        . . . f e f f e f e e e e f . . 
+        . . . f d b f d b f f e f . . . 
+        . . . f d d c d d b b d f . . . 
+        . . . . f f f f f f f f f . . . 
+        `,img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . c d f d d f d e e f . . . . . 
+        . c d f d d f d e e f f . . . . 
+        c d e e d d d d e e d d f . . . 
+        c d d d d c d d e e b d c . . . 
+        c c c c c d d e e e b d c . f f 
+        . f d d d d e e e f f c . f e f 
+        . f f f f f f e e e e f . f e f 
+        . f f f f e e e e e e e f f e f 
+        f d d f d d f e f e e e e f f . 
+        f d b f d b f e f e e e e f . . 
+        f f f f f f f f f f f f e f . . 
+        . . . . . . . . . f c d d f . . 
+        . . . . . . . . . . f f f f . . 
+        `,img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f f . . . . 
+        . c d d d d d d e e d d f . . . 
+        . c d f d d f d e e b d c . . . 
+        c d d f d d f d e e b d c . f f 
+        c d e e d d d d e e f c . f e f 
+        c d d d d c d e e e f . . f e f 
+        . f c c c d e e e f f . . f e f 
+        . . f f f f f e e e e f . f e f 
+        . . . . f e e e e e e e f f f . 
+        . . f f e f e e f e e e e f . . 
+        . f e f f e e f f f e e e f . . 
+        f d d b d d c f f f f f f b f . 
+        f d d c d d d f . . f c d d f . 
+        . f f f f f f f . . . f f f . . 
+        `,img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f f f . . . . 
+        . . f d d d e e e e d d f . . . 
+        . c d d d d d e e e b d c . . . 
+        . c d d d d d d e e b d c . . . 
+        c d d f d d f d e e f c . f f . 
+        c d d f d d f d e e f . . f e f 
+        c d e e d d d d e e f . . f e f 
+        . f d d d c d e e f f . . f e f 
+        . . f f f d e e e e e f . f e f 
+        . . . . f e e e e e e e f f f . 
+        . . . . f f e e e e e b f f . . 
+        . . . f e f f e e c d d f f . . 
+        . . f d d b d d c f f f . . . . 
+        . . f d d c d d d f f . . . . . 
+        . . . f f f f f f f . . . . . . 
+        `,img`
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . c d f d d f d e e f f . . . . 
+        . c d f d d f d e e d d f . . . 
+        c d e e d d d d e e b d c . . . 
+        c d d d d c d d e e b d c . . . 
+        c c c c c d d e e e f c . . . . 
+        . f d d d d e e e f f . . . . . 
+        . . f f f f f e e e e f . . . . 
+        . . . . f f e e e e e e f . f f 
+        . . . f e e f e e f e e f . e f 
+        . . f e e f e e f e e e f . e f 
+        . f b d f d b f b b f e f f e f 
+        . f d d f d d f d d b e f f f f 
+        . . f f f f f f f f f f f f f . 
+        `],
+    500,
+    true
+    )
     creature.image.flipX()
 }
 function startLevel (_0: number) {
@@ -50,6 +141,7 @@ function startLevel (_0: number) {
     tiles.placeOnRandomTile(summoner, myTiles.tile1)
     summoner.ay = 80
 }
+let isFacingLeft = false
 let creature: Sprite = null
 let summoner: Sprite = null
 summoner = sprites.create(img`
@@ -195,3 +287,129 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
 startLevel(1)
+game.onUpdate(function () {
+    if (summoner.vx < 0) {
+        isFacingLeft = true
+    } else {
+    	
+    }
+    if (summoner.vx > 0) {
+        isFacingLeft = false
+        animation.runImageAnimation(
+        summoner,
+        [img`
+            . . . f f f f f . . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f . . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f . . 
+            . f e 4 e 1 f 4 4 f . . . 
+            . f f f e 4 4 4 4 f . . . 
+            . . f e e e e e f f . . . 
+            . . e 4 4 e 7 7 7 f . . . 
+            . . e 4 4 e 7 7 7 f . . . 
+            . . f e e f 6 6 6 f . . . 
+            . . . f f f f f f . . . . 
+            . . . . f f f . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . f f f f f f . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f f . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f . . 
+            . f e 4 e 1 f 4 4 f f . . 
+            . f f f e e 4 4 4 f . . . 
+            . . f e 4 4 e e f f . . . 
+            . . f e 4 4 e 7 7 f . . . 
+            . f f f e e f 6 6 f f . . 
+            . f f f f f f f f f f . . 
+            . . f f . . . f f f . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . f f f f f f . . . . 
+            . f f f f f f f f f . . . 
+            . f f f f f f c f f f . . 
+            f f f f c f f f c f f f . 
+            f c f f c c f f f c c f f 
+            f c c f f f f e f f f f f 
+            f f f f f f f e e f f f . 
+            f f e e f b f e e f f f . 
+            f f e 4 e 1 f 4 4 f f . . 
+            . f f f e 4 4 4 4 f . . . 
+            . 4 4 4 e e e e f f . . . 
+            . e 4 4 e 7 7 7 7 f . . . 
+            . f e e f 6 6 6 6 f f . . 
+            . f f f f f f f f f f . . 
+            . . f f . . . f f f . . . 
+            `],
+        500,
+        true
+        )
+    }
+    if (controller.left.isPressed()) {
+        animation.runImageAnimation(
+        summoner,
+        [img`
+            . . . . . f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . . f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . . f f e e f b f e e f f 
+            . . . f 4 4 f 1 e 4 e f . 
+            . . . f 4 4 4 4 e f f f . 
+            . . . f f e e e e e f . . 
+            . . . f 7 7 7 e 4 4 e . . 
+            . . . f 7 7 7 e 4 4 e . . 
+            . . . f 6 6 6 f e e f . . 
+            . . . . f f f f f f . . . 
+            . . . . . . f f f . . . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . f f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . f f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . . f f e e f b f e e f f 
+            . . f f 4 4 f 1 e 4 e f . 
+            . . . f 4 4 4 e e f f f . 
+            . . . f f e e 4 4 e f . . 
+            . . . f 7 7 e 4 4 e f . . 
+            . . f f 6 6 f e e f f f . 
+            . . f f f f f f f f f f . 
+            . . . f f f . . . f f . . 
+            `,img`
+            . . . . . . . . . . . . . 
+            . . . . f f f f f f . . . 
+            . . . f f f f f f f f f . 
+            . . f f f c f f f f f f . 
+            . f f f c f f f c f f f f 
+            f f c c f f f c c f f c f 
+            f f f f f e f f f f c c f 
+            . f f f e e f f f f f f f 
+            . f f f e e f b f e e f f 
+            . . f f 4 4 f 1 e 4 e f f 
+            . . . f 4 4 4 4 e f f f . 
+            . . . f f e e e e 4 4 4 . 
+            . . . f 7 7 7 7 e 4 4 e . 
+            . . f f 6 6 6 6 f e e f . 
+            . . f f f f f f f f f f . 
+            . . . f f f . . . f f . . 
+            `],
+        500,
+        true
+        )
+    }
+})
